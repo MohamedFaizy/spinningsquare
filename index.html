@@ -54,7 +54,7 @@
         transform: scale(0.5);
         font-size: 1rem;
         cursor: pointer;
-        animation: myfirst 0.4s ease forwards;
+        animation: myfirst 1s ease forwards;
       }
       @keyframes myfirst {
         to {
@@ -82,7 +82,6 @@
       <div id="container"></div>
     </div>
     <script>
-      let boxess = [];
       const startbut = document.getElementById("startbut");
       const gobackbut = document.getElementById("gobackbut");
       const container = document.getElementById("container");
@@ -103,8 +102,11 @@
             box.classList.add("element");
             box.id = elementID;
             box.textContent = `Box ${elementID}`;
-            box.style.setProperty("--rotation", `${rotation}deg`);
-            boxess.push(box);
+            if (elementID % 2 === 0) {
+              box.style.setProperty("--rotation", `-${rotation}deg`);
+            } else {
+              box.style.setProperty("--rotation", `${rotation}deg`);
+            }
             setTimeout(() => {
               container.appendChild(box);
             }, 100);
